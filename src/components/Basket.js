@@ -33,6 +33,8 @@ const Basket = (props) => {
             <div>Ship</div>
             <div>{formatCurrency(ship)}</div>
           </div>
+          <i>Free ship nếu đơn hàng lớn hơn {formatCurrency(100000)}</i>
+          <hr />
           <div className='item'>
             <div>Tỗng tiền</div>
             <div>{formatCurrency(total)}</div>

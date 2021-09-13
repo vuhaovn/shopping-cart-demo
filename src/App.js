@@ -8,7 +8,15 @@ import { useEffect, useState } from 'react';
 
 function App() {
   const {products} = data
-  const [cartItem, setCartItem] = useState([])
+  const [cartItem, setCartItem] = useState(() => {
+    const item = localStorage.getItem('cartItem')
+    const initValue = JSON.parse(item)
+    return initValue || []
+  })
+
+  useEffect(() => {
+    localStorage.setItem('cartItem', JSON.stringify(cartItem))
+  }, [cartItem])
 
   const addItem = (product) => {
     const exist = cartItem.find(x => x.id === product.id)
